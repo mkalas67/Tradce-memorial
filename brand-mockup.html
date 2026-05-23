@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>trace.memorial — Brand Colour Mockups</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #e8e3da;
+      padding: 48px 40px;
+      font-family: 'Trebuchet MS', sans-serif;
+      color: #1c1917;
+    }
+    h2 {
+      font-family: Georgia, serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #78716c;
+      margin-bottom: 12px;
+      margin-top: 48px;
+    }
+    h2:first-of-type { margin-top: 0; }
+    .note {
+      font-size: 12px;
+      color: #a8a29e;
+      margin-bottom: 24px;
+      line-height: 1.6;
+      max-width: 640px;
+    }
+
+    /* ── Leaf SVG (inline, reusable via CSS background is awkward, so we repeat) ── */
+
+    /* ── Facebook Cover: 820 × 312 (half of 1640 × 624) ── */
+    .fb-cover {
+      width: 820px;
+      height: 312px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.14);
+    }
+
+    /* ── Profile: 200 × 200 ── */
+    .profile-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 0;
+    }
+    .profile {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.16);
+      position: relative;
+      flex-shrink: 0;
+    }
+    .profile-label {
+      font-size: 11px;
+      color: #a8a29e;
+      text-align: center;
+      margin-top: 6px;
+      width: 160px;
+    }
+    .profile-wrap { display: flex; flex-direction: column; align-items: center; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     OPTION A — "Whisper Strip"
+     Cream-forward. All colour is in a thin gradient band
+     along the bottom — tasteful, almost invisible.
+     ══════════════════════════════════════════════════════ -->
+<h2>Option A — Whisper Strip</h2>
+<p class="note">Cream is the dominant surface. The 9 palette accents appear only as a 4px gradient ribbon along the bottom edge. Quiet, premium. The colour story is there for people who look, invisible to people who don't.</p>
+
+<div class="fb-cover" style="background: #fdfaf0; display: flex; align-items: center; justify-content: space-between; padding: 0 64px;">
+
+  <!-- Left: type -->
+  <div style="max-width: 420px;">
+    <p style="font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #a8a29e; margin-bottom: 18px; font-family: 'Trebuchet MS', sans-serif;">Memorial pages for the animals we loved</p>
+    <h1 style="font-family: Georgia, serif; font-size: 34px; font-weight: 700; color: #2d1f0e; line-height: 1.2; margin-bottom: 20px; letter-spacing: -0.5px;">A permanent home<br>for their story.</h1>
+    <!-- Wordmark -->
+    <p style="font-family: Georgia, serif; font-size: 18px; font-weight: 600; color: #2d1f0e; letter-spacing: -0.2px;">trace<span style="opacity:0.45;">.memorial</span></p>
+  </div>
+
+  <!-- Right: leaf mark -->
+  <svg width="120" height="120" viewBox="0 0 70 70" fill="none" stroke="#b8860b" stroke-width="1.5" style="opacity: 0.85; flex-shrink: 0;">
+    <path d="M35 6 C58 18 58 52 35 64 C12 52 12 18 35 6 Z" />
+    <line x1="35" y1="6" x2="35" y2="64" stroke-width="1" />
+  </svg>
+
+  <!-- Palette strip -->
+  <div style="position:absolute; bottom:0; left:0; right:0; height:4px; background: linear-gradient(to right,
+    #4a7c59 0%,
+    #4a7c59 11%,
+    #3a7bbf 11%,
+    #3a7bbf 22%,
+    #2a6496 22%,
+    #2a6496 33%,
+    #7c5c9e 33%,
+    #7c5c9e 44%,
+    #b5507a 44%,
+    #b5507a 55%,
+    #b8860b 55%,
+    #b8860b 66%,
+    #c0673b 66%,
+    #c0673b 77%,
+    #3a5f3a 77%,
+    #3a5f3a 88%,
+    #2c2c2c 88%,
+    #2c2c2c 100%
+  ); opacity: 0.35;"></div>
+</div>
+
+<!-- Profile pair -->
+<div style="margin-top: 20px;">
+<div class="profile-row">
+  <div class="profile-wrap">
+    <div class="profile" style="background: #fdfaf0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <svg width="72" height="72" viewBox="0 0 70 70" fill="none" stroke="#b8860b" stroke-width="1.5">
+        <path d="M35 6 C58 18 58 52 35 64 C12 52 12 18 35 6 Z" />
+        <line x1="35" y1="6" x2="35" y2="64" stroke-width="1" />
+      </svg>
+      <p style="font-family: Georgia, serif; font-size: 11px; color: #2d1f0e; margin-top: 8px; font-weight: 600; letter-spacing: -0.2px;">trace<span style="opacity:0.45;">.memorial</span></p>
+    </div>
+    <p class="profile-label">Cream / light</p>
+  </div>
+
+  <div class="profile-wrap">
+    <div class="profile" style="background: linear-gradient(140deg, #2d1f0e 0%, #4a3020 60%, #6b4c30 100%); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <svg width="72" height="72" viewBox="0 0 70 70" fill="none" stroke="#C9B99A" stroke-width="1.5">
+        <path d="M35 6 C58 18 58 52 35 64 C12 52 12 18 35 6 Z" />
+        <line x1="35" y1="6" x2="35" y2="64" stroke-width="1" />
+      </svg>
+      <p style="font-family: Georgia, serif; font-size: 11px; color: rgba(255,255,255,0.85); margin-top: 8px; font-weight: 600; letter-spacing: -0.2px;">trace<span style="opacity:0.5;">.memorial</span></p>
+    </div>
+    <p class="profile-label">Dark / warm</p>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     OPTION B — "Constellation"
+     The leaf appears once large in brand gold, then 8×
+     smaller in the other palette accents — very low
+     opacity — scattered around it like light through leaves.
+     ══════════════════════════════════════════════════════ -->
+<h2>Option B — Constellation</h2>
+<p class="note">The leaf mark appears once dominant in gold, then ghosted in all other palette accents at 18% opacity scattered around it. Suggests breadth of personalisation without shouting it. Every family finds a different colour when they look closely.</p>
+
+<div class="fb-cover" style="background: #fdfaf0; display: flex; align-items: center; justify-content: space-between; padding: 0 64px; overflow: hidden;">
+
+  <!-- Ghost leaves scattered (right half, bg layer) -->
+  <!-- Meadow -->
+  <svg style="position:absolute; right:52px; top:28px; opacity:0.18;" width="52" height="52" viewBox="0 0 70 70" fill="none" stroke="#4a7c59" stroke-width="1.5"><path d="M35 6 C58 18 58 52 35 64 C12 52 12 18 35 6 Z" /><line x1="35" y1="6" x2="35" y2="64" stroke-width="1"/></svg>
+  <!-- Sky -->
+  <svg style="position:absolute; right:180px; top:18px; opacity:0.18;" width="38" height="38" viewBox="0 0 70 70" fill="none" stroke="#3a7bbf" stroke-width="1.5"><path d="M35 6 C58 18 58 52 35 64 C12 52 12 18 35 6 Z" /><line x1="35" y1="6" x2="35" y2="64" stroke-width="1"/></svg>
+  <!-- Ocean -->
+  <svg style="position:absolute; right:100px; bottom:36px; opacity:0.15;" width="44" height="44" viewBox="0 0 70 70" fill="none" stroke="#2a6496" stroke-width="1.5"><path d="M35 6 C58 18 58 52 35 64 C12 52 12 18 35 6 Z" /><line x1="35" y1="6" x2="35" y2="64" stroke-width="1"/></svg>
+  <!-- Lavender -->
+  <svg style="position:absolute; right:260px; bottom:24px; opacity:0.18;" width="30" height="30" viewBox="0 0 70 70" fill="none" stroke="#7c5c9e" stroke-width="1.5"><path d="M35 6 C58 18 58 52 35 64 C12 52 12 18 35 6 Z" /><line x1="35" y1="6" x2="35" y2="64" stroke-width="1"/></svg>
+  <!-- Rose -->
+  <svg style="position:absolute; right:320px; top:32px; opacity:0.16;" width="34" height="34" viewBox="0 0 70 70" fill="none" stroke="#b5507a" stroke-width="1.5"><path d="M35 6 C58 18 58 52 35 64 C12 52 12 18 35 6 Z" /><line x1="35" y1="6" x2="35" y2="64" stroke-width="1"/></svg>
+  <!-- Sunset -->
+  <svg style="position:absolute; right:220px; top:80px; opacity:0.14;" width="26" height="26" viewBox="0 0 70 70" fill="none" stroke="#c0673b" stroke-width="1.5"><path d="M35 6 C58 18 58 52 35 64 C12 52 12 18 35 6 Z" /><line x1="35" y1="6" x2="35" y2="64" stroke-width="1"/></svg>
+  <!-- Forest -->
+  <svg style="position:absolute; right:148px; top:52px; opacity:0.14;" width="22" height="22" viewBox="0 0 70 70" fill="none" stroke="#3a5f3a" stroke-width="1.5"><path d="M35 6 C58 18 58 52 35 64 C12 52 12 18 35 6 Z" /><line x1="35" y1="6" x2="35" y2="64" stroke-width="1"/></svg>
+
+  <!-- Left: type -->
+  <div style="max-width: 420px; position: relative; z-index: 1;">
+    <p style="font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #a8a29e; margin-bottom: 18px; font-family: 'Trebuchet MS', sans-serif;">Memorial pages for the animals we loved</p>
+    <h1 style="font-family: Georgia, serif; font-size: 34px; font-weight: 700; color: #2d1f0e; line-height: 1.2; margin-bottom: 20px; letter-spacing: -0.5px;">A permanent home<br>for their story.</h1>
+    <p style="font-family: Georgia, serif; font-size: 18px; font-weight: 600; color: #2d1f0e; letter-spacing: -0.2px;">trace<span style="opacity:0.45;">.memorial</span></p>
+  </div>
+
+  <!-- Right: dominant leaf -->
+  <svg width="130" height="130" viewBox="0 0 70 70" fill="none" stroke="#b8860b" stroke-width="1.5" style="position:relative; z-index:1; flex-shrink:0;">
+    <path d="M35 6 C58 18 58 52 35 64 C12 52 12 18 35 6 Z" />
+    <line x1="35" y1="6" x2="35" y2="64" stroke-width="1" />
+  </svg>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     OPTION C — "Warm Field"
+     Uses the Sunset palette accent + bg as the dominant
+     cover colour. Warmer, more inviting, less somber
+     than dark brown. The leaf appears in the sunset accent.
+     ══════════════════════════════════════════════════════ -->
+<h2>Option C — Warm Field (Sunset palette)</h2>
+<p class="note">Replaces the dark espresso with the Sunset palette's warm terracotta (bg: #fdf5f0, accent: #c0673b). Feels like late afternoon light rather than a memorial stone. Still dignified, but approachable and warm.</p>
+
+<div class="fb-cover" style="background: linear-gradient(150deg, #fdf5f0 0%, #fae8dc 100%); display: flex; align-items: center; justify-content: space-between; padding: 0 64px;">
+
+  <div style="max-width: 420px;">
+    <p style="font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #c0956a; margin-bottom: 18px; font-family: 'Trebuchet MS', sans-serif;">Memorial pages for the animals we loved</p>
+    <h1 style="font-family: Georgia, serif; font-size: 34px; font-weight: 700; color: #2d1f0e; line-height: 1.2; margin-bottom: 20px; letter-spacing: -0.5px;">A permanent home<br>for their story.</h1>
+    <p style="font-family: Georgia, serif; font-size: 18px; font-weight: 600; color: #2d1f0e; letter-spacing: -0.2px;">trace<span style="opacity:0.45;">.memorial</span></p>
+  </div>
+
+  <svg width="120" height="120" viewBox="0 0 70 70" fill="none" stroke="#c0673b" stroke-width="1.5" style="opacity: 0.7; flex-shrink: 0;">
+    <path d="M35 6 C58 18 58 52 35 64 C12 52 12 18 35 6 Z" />
+    <line x1="35" y1="6" x2="35" y2="64" stroke-width="1" />
+  </svg>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     OPTION D — "Meadow & Gold"
+     Uses meadow sage green as a soft tonal background
+     panel, paired with brand gold leaf. Fresh, living,
+     nature-connected. Works well for a page about animals.
+     ══════════════════════════════════════════════════════ -->
+<h2>Option D — Meadow &amp; Gold</h2>
+<p class="note">Uses the Meadow palette (sage green bg: #e6f0e6, accent: #4a7c59) as a secondary panel behind the mark, with cream as the primary surface. Feels alive and nature-connected rather than grief-heavy. The gold leaf bridges brand identity and the memorial's warmth.</p>
+
+<div class="fb-cover" style="display: flex; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 32px rgba(0,0,0,0.14);">
+
+  <!-- Left cream panel: text -->
+  <div style="flex: 1; background: #fdfaf0; padding: 0 52px; display: flex; flex-direction: column; justify-content: center;">
+    <p style="font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #a8a29e; margin-bottom: 18px; font-family: 'Trebuchet MS', sans-serif;">Memorial pages for the animals we loved</p>
+    <h1 style="font-family: Georgia, serif; font-size: 32px; font-weight: 700; color: #2d1f0e; line-height: 1.2; margin-bottom: 20px; letter-spacing: -0.5px;">A permanent home<br>for their story.</h1>
+    <p style="font-family: Georgia, serif; font-size: 18px; font-weight: 600; color: #2d1f0e; letter-spacing: -0.2px;">trace<span style="opacity:0.45;">.memorial</span></p>
+  </div>
+
+  <!-- Right meadow panel: mark -->
+  <div style="width: 260px; flex-shrink: 0; background: #e6f0e6; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;">
+    <svg width="100" height="100" viewBox="0 0 70 70" fill="none" stroke="#b8860b" stroke-width="1.5">
+      <path d="M35 6 C58 18 58 52 35 64 C12 52 12 18 35 6 Z" />
+      <line x1="35" y1="6" x2="35" y2="64" stroke-width="1" />
+    </svg>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     PALETTE REFERENCE STRIP
+     ══════════════════════════════════════════════════════ -->
+<h2>All 9 palettes — reference</h2>
+<p class="note">These are the exact accent and background values from the memorial page code. Any of these can be used as a tonal note in the brand identity.</p>
+
+<div style="display: flex; gap: 12px; flex-wrap: wrap;">
+  <!-- Each swatch: bg, accent, name -->
+  <div style="text-align:center;">
+    <div style="width:80px; height:56px; border-radius:8px; background:#e6f0e6; border:2px solid #4a7c59;"></div>
+    <div style="width:80px; height:12px; border-radius:0 0 4px 4px; background:#4a7c59; margin-top:-2px;"></div>
+    <p style="font-size:10px; color:#78716c; margin-top:6px;">Meadow<br><span style="color:#a8a29e;">#4a7c59</span></p>
+  </div>
+  <div style="text-align:center;">
+    <div style="width:80px; height:56px; border-radius:8px; background:#e0ecf4; border:2px solid #2a6496;"></div>
+    <div style="width:80px; height:12px; border-radius:0 0 4px 4px; background:#2a6496; margin-top:-2px;"></div>
+    <p style="font-size:10px; color:#78716c; margin-top:6px;">Ocean<br><span style="color:#a8a29e;">#2a6496</span></p>
+  </div>
+  <div style="text-align:center;">
+    <div style="width:80px; height:56px; border-radius:8px; background:#fae8dc; border:2px solid #c0673b;"></div>
+    <div style="width:80px; height:12px; border-radius:0 0 4px 4px; background:#c0673b; margin-top:-2px;"></div>
+    <p style="font-size:10px; color:#78716c; margin-top:6px;">Sunset<br><span style="color:#a8a29e;">#c0673b</span></p>
+  </div>
+  <div style="text-align:center;">
+    <div style="width:80px; height:56px; border-radius:8px; background:#e4ece0; border:2px solid #3a5f3a;"></div>
+    <div style="width:80px; height:12px; border-radius:0 0 4px 4px; background:#3a5f3a; margin-top:-2px;"></div>
+    <p style="font-size:10px; color:#78716c; margin-top:6px;">Forest<br><span style="color:#a8a29e;">#3a5f3a</span></p>
+  </div>
+  <div style="text-align:center;">
+    <div style="width:80px; height:56px; border-radius:8px; background:#ede0f7; border:2px solid #7c5c9e;"></div>
+    <div style="width:80px; height:12px; border-radius:0 0 4px 4px; background:#7c5c9e; margin-top:-2px;"></div>
+    <p style="font-size:10px; color:#78716c; margin-top:6px;">Lavender<br><span style="color:#a8a29e;">#7c5c9e</span></p>
+  </div>
+  <div style="text-align:center;">
+    <div style="width:80px; height:56px; border-radius:8px; background:#e8e8e8; border:2px solid #2c2c2c;"></div>
+    <div style="width:80px; height:12px; border-radius:0 0 4px 4px; background:#2c2c2c; margin-top:-2px;"></div>
+    <p style="font-size:10px; color:#78716c; margin-top:6px;">Monochrome<br><span style="color:#a8a29e;">#2c2c2c</span></p>
+  </div>
+  <div style="text-align:center;">
+    <div style="width:80px; height:56px; border-radius:8px; background:#f7f0d8; border:2px solid #b8860b;"></div>
+    <div style="width:80px; height:12px; border-radius:0 0 4px 4px; background:#b8860b; margin-top:-2px;"></div>
+    <p style="font-size:10px; color:#78716c; margin-top:6px;">Golden<br><span style="color:#a8a29e;">#b8860b</span></p>
+  </div>
+  <div style="text-align:center;">
+    <div style="width:80px; height:56px; border-radius:8px; background:#f7dcea; border:2px solid #b5507a;"></div>
+    <div style="width:80px; height:12px; border-radius:0 0 4px 4px; background:#b5507a; margin-top:-2px;"></div>
+    <p style="font-size:10px; color:#78716c; margin-top:6px;">Rose<br><span style="color:#a8a29e;">#b5507a</span></p>
+  </div>
+  <div style="text-align:center;">
+    <div style="width:80px; height:56px; border-radius:8px; background:#ddeeff; border:2px solid #3a7bbf;"></div>
+    <div style="width:80px; height:12px; border-radius:0 0 4px 4px; background:#3a7bbf; margin-top:-2px;"></div>
+    <p style="font-size:10px; color:#78716c; margin-top:6px;">Sky<br><span style="color:#a8a29e;">#3a7bbf</span></p>
+  </div>
+</div>
+
+<p style="font-size: 11px; color: #a8a29e; margin-top: 48px; line-height: 1.6;">trace.memorial brand colour exploration · built from memorial page palette values</p>
+
+</body>
+</html>
