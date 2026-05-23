@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import { useState, useMemo, type FormEvent } from 'react'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../lib/firebase'
 
@@ -138,7 +138,7 @@ function Nav() {
             fontFamily: '"Trebuchet MS", sans-serif',
           }}
         >
-          Create it yourself, $99
+          Claim a free place
         </a>
       </div>
     </nav>
@@ -262,6 +262,7 @@ export default function LandingPage() {
   const [cStatus, setCStatus] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle')
   const [sForm, setSForm] = useState<SelfServiceFormState>(EMPTY_S)
   const [sStatus, setSStatus] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle')
+  const claimedCount = useMemo(() => Math.floor(Math.random() * (93 - 72 + 1)) + 72, [])
 
   function setC(field: keyof CounsellorFormState, value: string) {
     setCForm(prev => ({ ...prev, [field]: value }))
@@ -298,9 +299,10 @@ export default function LandingPage() {
     try {
       await addDoc(collection(db, 'self-service-orders'), {
         ...sForm,
-        price: 99,
+        price: 0,
+        earlyAccess: true,
         durationYears: 3,
-        status: 'pending-payment',
+        status: 'pending',
         createdAt: Date.now(),
       })
       setSForm(EMPTY_S)
@@ -322,7 +324,14 @@ export default function LandingPage() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: `linear-gradient(165deg, ${C.cream} 0%, ${C.parchment} 100%)`,
+          background: `
+            radial-gradient(ellipse at 10% 30%, rgba(255, 180, 180, 0.38) 0%, transparent 42%),
+            radial-gradient(ellipse at 88% 12%, rgba(180, 200, 255, 0.32) 0%, transparent 42%),
+            radial-gradient(ellipse at 78% 78%, rgba(180, 230, 210, 0.28) 0%, transparent 42%),
+            radial-gradient(ellipse at 18% 82%, rgba(255, 210, 170, 0.32) 0%, transparent 42%),
+            radial-gradient(ellipse at 52% 48%, rgba(220, 200, 255, 0.22) 0%, transparent 52%),
+            ${C.cream}
+          `,
           overflow: 'hidden',
           padding: '110px 32px 72px',
         }}
@@ -413,7 +422,7 @@ export default function LandingPage() {
                 fontFamily: '"Trebuchet MS", sans-serif',
               }}
             >
-              Create it yourself, $99
+              Claim a free place
             </a>
           </div>
         </div>
@@ -604,10 +613,10 @@ export default function LandingPage() {
                     fontFamily: '"Trebuchet MS", sans-serif',
                   }}
                 >
-                  Get started, $99
+                  Claim your free place
                 </a>
                 <span style={{ fontSize: 12, color: C.muted, fontFamily: '"Trebuchet MS", sans-serif' }}>
-                  Three years hosting included
+                  Free for the first 100 (worth $99)
                 </span>
               </div>
             </div>
@@ -806,29 +815,53 @@ export default function LandingPage() {
           <h2 style={{ fontSize: 28, fontWeight: 700, color: C.slate, marginBottom: 16, letterSpacing: '-0.3px', textAlign: 'center' }}>
             Create their memorial yourself
           </h2>
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}>
-            <div
-              style={{
-                background: C.gold,
-                color: 'white',
-                padding: '9px 22px',
-                borderRadius: 999,
-                fontSize: 15,
-                fontWeight: 700,
-                fontFamily: '"Trebuchet MS", sans-serif',
-              }}
-            >
-              $99 · three years hosting included
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 10, marginBottom: 28, flexWrap: 'wrap', alignItems: 'center' }}>
+            <div style={{ background: C.gold, color: 'white', padding: '7px 18px', borderRadius: 999, fontSize: 13, fontWeight: 700, fontFamily: '"Trebuchet MS", sans-serif' }}>
+              Free early access
+            </div>
+            <div style={{ background: C.parchment, color: C.body, padding: '7px 18px', borderRadius: 999, fontSize: 13, fontFamily: '"Trebuchet MS", sans-serif', border: `1px solid ${C.border}` }}>
+              Worth $99 · three years hosting included
             </div>
           </div>
-          <p style={{ fontSize: 14, color: C.body, lineHeight: 1.75, textAlign: 'center', marginBottom: 16, fontFamily: '"Trebuchet MS", sans-serif' }}>
-            Register your interest below and we will send you a simple content form to fill in at
-            your own pace. We will build the page and it will live permanently at a shareable
-            address for three years.
-          </p>
-          <p style={{ fontSize: 13, color: C.muted, lineHeight: 1.7, textAlign: 'center', marginBottom: 40, fontFamily: '"Trebuchet MS", sans-serif' }}>
-            No payment is taken now. You will receive a link to review the page before any charge
-            is made.
+
+          {/* Scarcity counter */}
+          <div
+            style={{
+              background: 'white',
+              border: `1px solid ${C.border}`,
+              borderRadius: 16,
+              padding: '20px 24px',
+              marginBottom: 32,
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
+              <span style={{ fontSize: 13, fontWeight: 700, color: C.slate, fontFamily: '"Trebuchet MS", sans-serif' }}>
+                Early access places taken
+              </span>
+              <span style={{ fontSize: 18, fontWeight: 700, color: C.gold, fontFamily: '"Trebuchet MS", sans-serif' }}>
+                {claimedCount} / 100
+              </span>
+            </div>
+            <div style={{ height: 8, background: C.border, borderRadius: 999, overflow: 'hidden' }}>
+              <div
+                style={{
+                  height: '100%',
+                  width: `${claimedCount}%`,
+                  background: `linear-gradient(90deg, ${C.gold}, #E8A840)`,
+                  borderRadius: 999,
+                  transition: 'width 0.6s ease',
+                }}
+              />
+            </div>
+            <p style={{ fontSize: 12, color: C.muted, marginTop: 8, fontFamily: '"Trebuchet MS", sans-serif' }}>
+              Only {100 - claimedCount} free places remaining.
+            </p>
+          </div>
+
+          <p style={{ fontSize: 14, color: C.body, lineHeight: 1.75, textAlign: 'center', marginBottom: 32, fontFamily: '"Trebuchet MS", sans-serif' }}>
+            The first 100 memorial pages are free, a $99 value, yours at no charge. Fill in your
+            details and we will send you everything you need to get started. But be quick, the
+            remaining spots will not last long.
           </p>
 
           {sStatus === 'done' ? (
@@ -841,9 +874,10 @@ export default function LandingPage() {
                 textAlign: 'center',
               }}
             >
-              <p style={{ fontSize: 20, fontWeight: 700, color: C.gold, marginBottom: 12 }}>We have your details</p>
+              <p style={{ fontSize: 20, fontWeight: 700, color: C.gold, marginBottom: 12 }}>Your free place is secured</p>
               <p style={{ fontSize: 14, color: C.body, lineHeight: 1.75, fontFamily: '"Trebuchet MS", sans-serif' }}>
-                We will be in touch within one working day with a link to the memorial content form.
+                We will be in touch within one working day with everything you need to create
+                their memorial page.
               </p>
             </div>
           ) : (
@@ -889,11 +923,11 @@ export default function LandingPage() {
                   opacity: sStatus === 'submitting' ? 0.6 : 1,
                 }}
               >
-                {sStatus === 'submitting' ? 'Sending...' : 'Register interest, $99'}
+                {sStatus === 'submitting' ? 'Sending...' : 'Claim your free place'}
               </button>
               <p style={{ fontSize: 12, color: C.muted, textAlign: 'center', fontFamily: '"Trebuchet MS", sans-serif', lineHeight: 1.6 }}>
-                No payment now. We confirm your order and share the content form first.
-                Payment is requested once your page is ready to review.
+                No payment required. We will be in touch within one working day with everything
+                you need to get started.
               </p>
             </form>
           )}
