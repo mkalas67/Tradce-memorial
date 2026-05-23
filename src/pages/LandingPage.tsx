@@ -694,7 +694,68 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Gallery ───────────────────────────────────────────────────────── */}
+      {/* ── Photo gallery ─────────────────────────────────────────────────── */}
+      <section style={{ background: C.cream, padding: '72px 0 72px 40px' }}>
+        <div style={{ maxWidth: 840, margin: '0 auto 40px', paddingRight: 40 }}>
+          <p style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, marginBottom: 16, fontFamily: '"Trebuchet MS", sans-serif' }}>
+            Real pages, real stories
+          </p>
+          <h2 style={{ fontSize: 28, fontWeight: 700, color: C.slate, marginBottom: 12, letterSpacing: '-0.3px' }}>
+            A page as individual as they were
+          </h2>
+          <p style={{ fontSize: 14, color: C.body, lineHeight: 1.8, maxWidth: 480, fontFamily: '"Trebuchet MS", sans-serif', fontWeight: 300 }}>
+            Every memorial is different. A different palette, a different story, a different set of
+            photographs. These are some of the pages we have built.
+          </p>
+        </div>
+
+        {/* Horizontal scroll strip */}
+        <div
+          style={{
+            display: 'flex',
+            gap: 16,
+            overflowX: 'auto',
+            paddingRight: 40,
+            paddingBottom: 8,
+            msOverflowStyle: 'none',
+            scrollbarWidth: 'none' as React.CSSProperties['scrollbarWidth'],
+          }}
+        >
+          {[
+            { src: '/visuals/gallery-portrait-bella.png',    label: 'Bella' },
+            { src: '/visuals/gallery-portrait-pepper.png',   label: 'Pepper' },
+            { src: '/visuals/gallery-portrait-willow.png',   label: 'Willow' },
+            { src: '/visuals/gallery-meadow-bella.png',      label: 'Meadow' },
+            { src: '/visuals/gallery-ocean-captain.png',     label: 'Ocean' },
+            { src: '/visuals/gallery-golden-honey.png',      label: 'Golden' },
+            { src: '/visuals/gallery-lavender-willow.png',   label: 'Lavender' },
+            { src: '/visuals/gallery-rose-rosie.png',        label: 'Rose' },
+            { src: '/visuals/gallery-sky-pepper.png',        label: 'Sky' },
+            { src: '/visuals/gallery-montage-warm.png',      label: 'Four pages' },
+            { src: '/visuals/gallery-montage-cool.png',      label: 'Four pages' },
+          ].map(item => (
+            <div
+              key={item.src}
+              style={{
+                flexShrink: 0,
+                height: 340,
+                borderRadius: 16,
+                overflow: 'hidden',
+                boxShadow: '0 4px 24px rgba(30,43,60,0.10)',
+                position: 'relative',
+              }}
+            >
+              <img
+                src={item.src}
+                alt={`${item.label} memorial page`}
+                style={{ height: '100%', width: 'auto', display: 'block' }}
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Palette gallery ────────────────────────────────────────────────── */}
       <section style={{ background: C.parchment, padding: '72px 32px' }}>
         <div style={{ maxWidth: 880, margin: '0 auto' }}>
           <p style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: C.muted, marginBottom: 16, textAlign: 'center', fontFamily: '"Trebuchet MS", sans-serif' }}>
