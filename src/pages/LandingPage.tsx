@@ -3,6 +3,19 @@ import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../lib/firebase'
 
 const ENQUIRY_EMAIL = import.meta.env.VITE_ENQUIRY_EMAIL ?? 'hello@trace.memorial'
+const ACADEMY_API = 'https://academyforpetloss.com/api/trace-enquiry'
+
+async function postToSheets(form: string, data: Record<string, unknown>) {
+  try {
+    await fetch(ACADEMY_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ form, ...data }),
+    })
+  } catch {
+    // non-critical — Firestore is the source of truth
+  }
+}
 
 // ── Design tokens ─────────────────────────────────────────────────────────────
 
@@ -276,16 +289,9 @@ export default function LandingPage() {
     e.preventDefault()
     setCStatus('submitting')
     try {
-      await addDoc(collection(db, 'enquiries'), {
-        ...cForm,
-        createdAt: Date.now(),
-        source: 'landing-page',
-      })
-      const subject = encodeURIComponent(`trace.memorial enquiry for ${cForm.petName || 'a pet'}`)
-      const body = encodeURIComponent(
-        `Name: ${cForm.name}\nEmail: ${cForm.email}\nPet: ${cForm.petName} (${cForm.petType})\n\n${cForm.message}`
-      )
-      window.location.href = `mailto:${ENQUIRY_EMAIL}?subject=${subject}&body=${body}`
+      const payload = { ...cForm, createdAt: Date.now(), source: 'landing-page' }
+      await addDoc(collection(db, 'enquiries'), payload)
+      await postToSheets('counsellor', payload)
       setCForm(EMPTY_C)
       setCStatus('done')
     } catch {
@@ -297,14 +303,16 @@ export default function LandingPage() {
     e.preventDefault()
     setSStatus('submitting')
     try {
-      await addDoc(collection(db, 'self-service-orders'), {
+      const payload = {
         ...sForm,
         price: 0,
         earlyAccess: true,
         durationYears: 3,
         status: 'pending',
         createdAt: Date.now(),
-      })
+      }
+      await addDoc(collection(db, 'self-service-orders'), payload)
+      await postToSheets('self-service', payload)
       setSForm(EMPTY_S)
       setSStatus('done')
     } catch {
@@ -788,9 +796,15 @@ export default function LandingPage() {
           <h2 style={{ fontSize: 28, fontWeight: 700, color: C.slate, marginBottom: 10, letterSpacing: '-0.3px', textAlign: 'center' }}>
             Work with a trained counsellor
           </h2>
-          <p style={{ fontSize: 14, color: C.body, lineHeight: 1.75, textAlign: 'center', marginBottom: 40, fontFamily: '"Trebuchet MS", sans-serif' }}>
+          <p style={{ fontSize: 14, color: C.body, lineHeight: 1.75, textAlign: 'center', marginBottom: 12, fontFamily: '"Trebuchet MS", sans-serif' }}>
             Tell us a little about your pet. One of our certified pet bereavement counsellors
             will be in touch to guide you through the rest.
+          </p>
+          <p style={{ fontSize: 13, color: C.muted, textAlign: 'center', marginBottom: 32, fontFamily: '"Trebuchet MS", sans-serif' }}>
+            Or email us directly at{' '}
+            <a href="mailto:hello@trace.memorial" style={{ color: C.gold, textDecoration: 'none' }}>
+              hello@trace.memorial
+            </a>
           </p>
 
           {cStatus === 'done' ? (
@@ -1003,8 +1017,13 @@ export default function LandingPage() {
             trace<span style={{ opacity: 0.5 }}>.memorial</span>
           </p>
         </div>
-        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', fontFamily: '"Trebuchet MS", sans-serif', marginBottom: 16 }}>
+        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', fontFamily: '"Trebuchet MS", sans-serif', marginBottom: 8 }}>
           A permanent home for the pets we have loved and lost.
+        </p>
+        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', fontFamily: '"Trebuchet MS", sans-serif', marginBottom: 16 }}>
+          <a href="mailto:hello@trace.memorial" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'underline' }}>
+            hello@trace.memorial
+          </a>
         </p>
         <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', fontFamily: '"Trebuchet MS", sans-serif' }}>
           Built by{' '}
